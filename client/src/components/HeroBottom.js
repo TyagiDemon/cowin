@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function HeroBottom() {
-  return (
-		<div className="flex justify-between bg-[#2a2f47] w-full py-4 text-white px-4 items-center">
+	return (
+		<div
+			className="flex justify-between bg-[#2a2f47] w-full py-4 text-white px-4 items-center"
+			id="heroBottom"
+		>
 			<div className="font-semibold">Support for COVID-19</div>
 			<div className="font-light">
 				<div>Health Ministry</div>
@@ -28,4 +31,4 @@ function HeroBottom() {
 	);
 }
 
-export default HeroBottom
+export default HeroBottom;

@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Navbar() {
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	const setClass=() => {
+		if (
+			window.pageYOffset >= document.getElementById("heroBottom").offsetTop -150
+		) {
+			setIsScrolled(true);
+		} else {
+			setIsScrolled(false);
+		}
+	};
+	useEffect(() => {
+		setClass();
+		window.onscroll = function () {
+			setClass();
+		}
+	})
 	return (
-		<div className="absolute w-full">
+		<div className={`${isScrolled && "bg-[#0e1229]"} w-full fixed z-50`}>
 			<div className="text-gray-200 bg-[#262626] text-lg">
 				<div className="flex">
 					<span className="bg-black transition py-3 px-5 cursor-pointer">
@@ -24,14 +41,22 @@ function Navbar() {
 					<div className="text-3xl font-bold">Co-WIN</div>
 					<div className="text-sm font-light">Winning over Covid-19</div>
 				</div>
-				<div className="flex-1 flex flex-row-reverse gap-10 font-semibold items-center">
-					<div className="border-2 rounded-r-full rounded-l-full py-1 px-4 cursor-pointer">
-						Register/Login
+				<div className="flex-1 flex flex-row-reverse gap-8 items-center font-light">
+					<div className="border-2 rounded-r-full rounded-l-full py-1 px-6 cursor-pointer">
+						Register/ Sign In
 					</div>
-					<span className="cursor-pointer">Support</span>
-					<span className="cursor-pointer">Resources</span>
-					<span className="cursor-pointer">Platforms</span>
-					<span className="cursor-pointer">Vaccination services</span>
+					<span className="cursor-pointer">
+						Support <span className="text-xs">▼</span>
+					</span>
+					<span className="cursor-pointer">
+						Resources <span className="text-xs">▼</span>
+					</span>
+					<span className="cursor-pointer">
+						Platforms <span className="text-xs">▼</span>
+					</span>
+					<span className="cursor-pointer">
+						Vaccination services <span className="text-xs">▼</span>
+					</span>
 				</div>
 			</div>
 		</div>
